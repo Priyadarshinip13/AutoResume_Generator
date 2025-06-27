@@ -33,7 +33,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.title("✨ AutoResume Gen")
+st.title("✨AutoResume Gen")
 st.markdown("Craft a beautiful resume step by step with ease.")
 
 # Session state to store user input and current step
@@ -48,7 +48,7 @@ def prev_step():
 
 # Step 1: Personal Information
 if st.session_state.step == 1:
-    st.header("👤 Personal Information")
+    st.header("Personal Information")
     st.session_state.name = st.text_input("Full Name")
     st.session_state.email = st.text_input("Email")
     st.session_state.phone = st.text_input("Phone Number")
@@ -56,7 +56,7 @@ if st.session_state.step == 1:
         next_step()
 
 elif st.session_state.step == 2:
-    st.header("🧾 Profile Summary")
+    st.header("Profile Summary")
     st.session_state.profile = st.text_area("Write a brief summary about yourself")
     col1, col2 = st.columns(2)
     with col1:
@@ -67,7 +67,7 @@ elif st.session_state.step == 2:
             next_step()
 
 elif st.session_state.step == 3:
-    st.header("🎓 Education")
+    st.header("Education")
     st.session_state.college = st.text_input("College/University Name")
     st.session_state.degree = st.text_input("Degree")
     st.session_state.education_year = st.text_input("Year of Graduation")
@@ -80,7 +80,7 @@ elif st.session_state.step == 3:
             next_step()
 
 elif st.session_state.step == 4:
-    st.header("🛠️ Skills")
+    st.header("Skills")
     st.session_state.skills = st.text_area("List your skills (comma-separated)")
     col1, col2 = st.columns(2)
     with col1:
@@ -91,7 +91,7 @@ elif st.session_state.step == 4:
             next_step()
 
 elif st.session_state.step == 5:
-    st.header("💼 Experience")
+    st.header("Experience")
     st.session_state.experience = st.text_area("Describe your experience (projects, internships, jobs)")
     col1, col2 = st.columns(2)
     with col1:
@@ -102,7 +102,7 @@ elif st.session_state.step == 5:
             next_step()
 
 elif st.session_state.step == 6:
-    st.header("🎨 Hobbies & Interests")
+    st.header("Hobbies & Interests")
     st.session_state.hobbies = st.text_area("Your hobbies/interests (comma-separated)")
     col1, col2 = st.columns(2)
     with col1:
@@ -113,7 +113,7 @@ elif st.session_state.step == 6:
             next_step()
 
 elif st.session_state.step == 7:
-    st.header("📄 Preview & Download Resume")
+    st.header("Preview & Download Resume")
 
     st.markdown(f"""
     **Name:** {st.session_state.name}  
@@ -142,7 +142,7 @@ elif st.session_state.step == 7:
     if st.button("⬅ Back"):
         prev_step()
 
-    if st.button("📥 Download Resume as PDF"):
+    if st.button("Download Resume as PDF"):
         pdf = FPDF()
         pdf.add_page()
         pdf.set_auto_page_break(auto=True, margin=15)
@@ -191,7 +191,7 @@ elif st.session_state.step == 7:
         pdf_output = pdf.output(dest="S").encode("latin-1")
 
         st.download_button(
-            label="📄 Download Resume (Styled)",
+            label="Download Resume (Styled)",
             data=pdf_output,
             file_name="Styled_Resume.pdf",
             mime="application/pdf"
